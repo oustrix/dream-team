@@ -8,7 +8,7 @@ engine = create_engine(
     pool_reset_on_return=None,
 )
 
-session = sessionmaker(
+Session = sessionmaker(
     bind=engine,
     autoflush=False,
     autocommit=False,
