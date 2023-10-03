@@ -1,3 +1,4 @@
 .idea/
 src/market/__pycache__/
+src/market/api/__pycache__/
 .env
