@@ -23,3 +23,18 @@ class Operation(Base):
     kind = sa.Column(sa.String)
     amount = sa.Column(sa.Numeric(10, 2))
     description = sa.Column(sa.String, nullable=True)
+
+
+class Order(Base):
+    __tablename__ = 'orders'
+
+    id = sa.Column(sa.Integer, primary_key=True)
+    owner_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
+    status = sa.Column(sa.String)
+    worker_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
+    title = sa.Column(sa.String)
+    description = sa.Column(sa.Text)
+    reward = sa.Column(sa.Numeric(10, 2))
+    created_at = sa.Column(sa.Date)
+    assigned_at = sa.Column(sa.Date)
+    closed_at = sa.Column(sa.Date)
