@@ -11,12 +11,16 @@ class OperationKind(str, Enum):
     OUTCOME = 'outcome'
 
 
-class Operation(BaseModel):
-    id: int
-    date: date
+class OperationBase(BaseModel):
     kind: OperationKind
     amount: Decimal
     description: Optional[str]
 
+
+class Operation(OperationBase):
+    id: int
+    date: date
+
     class Config:
         from_attributes = True
+
