@@ -2,10 +2,7 @@ from typing import List
 
 from fastapi import APIRouter
 from fastapi import Depends
-from sqlalchemy.orm import Session
 
-from .. import tables
-from ..database import get_session
 from ..models.operations import Operation, OperationCreate
 from ..services.operations import OperationsService
 
