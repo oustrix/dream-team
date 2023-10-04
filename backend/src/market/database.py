@@ -14,6 +14,7 @@ Session = sessionmaker(
     autocommit=False,
 )
 
+
 def get_session() -> Session:
     session = Session()
     try:
