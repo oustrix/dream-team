@@ -1,9 +1,11 @@
 from typing import List
+from datetime import datetime
 
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
 from ..database import get_session
+from ..models.operations import OperationCreate
 from .. import tables
 
 
@@ -19,3 +21,10 @@ class OperationsService:
         )
 
         return operations
+
+    def create(self, operation_data: OperationCreate) -> tables.Operation:
+        operation = tables.Operation(**operation_data.model_dump())
+        operation.date = datetime.utcnow()
+        self.session.add(operation)
+        self.session.commit()
+        return operation
