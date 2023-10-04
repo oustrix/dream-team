@@ -24,3 +24,6 @@ class Operation(OperationBase):
     class Config:
         from_attributes = True
 
+
+class OperationCreate(OperationBase):
+    pass
