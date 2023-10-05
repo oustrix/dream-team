@@ -13,18 +13,20 @@ class OperationsService:
     def __init__(self, session: Session = Depends(get_session)):
         self.session = session
 
-    def get_list(self) -> List[tables.Operation]:
+    def get_list(self, user_id: int) -> List[tables.Operation]:
         operations = (
             self.session
             .query(tables.Operation)
+            .filter_by(user_id=user_id)
             .all()
         )
 
         return operations
 
-    def create(self, operation_data: OperationCreate) -> tables.Operation:
+    def create(self, user_id: int, operation_data: OperationCreate) -> tables.Operation:
         operation = tables.Operation(**operation_data.model_dump())
         operation.date = datetime.utcnow()
+        operation.user_id = user_id
         self.session.add(operation)
         self.session.commit()
         return operation
