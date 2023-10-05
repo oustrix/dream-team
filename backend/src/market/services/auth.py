@@ -99,7 +99,7 @@ class AuthService:
 
         return self.create_token(user)
 
-    def authenticate_uer(self, username: str, password: str) -> Token:
+    def authenticate_user(self, username: str, password: str) -> Token:
         exception = HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail='Incorrect username or password',
