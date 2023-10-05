@@ -8,7 +8,8 @@ from ..models.auth import (
 from ..services.auth import AuthService, get_current_user
 
 router = APIRouter(
-    prefix="/auth"
+    prefix="/auth",
+    tags=['auth']
 )
 
 

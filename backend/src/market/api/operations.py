@@ -10,6 +10,7 @@ from ..services.operations import OperationsService
 
 router = APIRouter(
     prefix='/operations',
+    tags=['operations']
 )
 
 
