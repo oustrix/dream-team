@@ -42,6 +42,16 @@ def get_order(
         order_id: int,
         service: OrdersService = Depends(),
 ):
+    """
+    Получение заказа.
+
+    - **order_id**: ID заказа.
+
+    \f
+    :param order_id:
+    :param service:
+    :return:
+    """
     return service.get_order(order_id)
 
 
