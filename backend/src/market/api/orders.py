@@ -37,7 +37,7 @@ def get_orders(
     return service.get_orders(status=status, owner_id=owner, worker_id=worker)
 
 
-@router.get('/{order_id}', response_model=Order)
+@router.get('/{order_id}', response_model=Order, summary="Получение заказа")
 def get_order(
         order_id: int,
         service: OrdersService = Depends(),
