@@ -18,6 +18,14 @@ def sign_up(
         user_data: UserCreate,
         service: AuthService = Depends()
 ):
+    """
+    Регистрация пользователя.
+
+    \f
+    :param user_data:
+    :param service:
+    :return:
+    """
     return service.register_new_user(user_data)
 
 
