@@ -23,7 +23,7 @@ class Order(OrderBase):
     owner_id: int
     status: OrderStatus
     worker_id: Optional[int]
-    create_at: Optional[date]
+    created_at: Optional[date]
     assigned_at: Optional[date]
     closed_at: Optional[date]
 
