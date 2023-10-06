@@ -33,3 +33,7 @@ class Order(OrderBase):
 
 class OrderCreate(OrderBase):
     pass
+
+
+class OrderUpdate(Order):
+    pass
