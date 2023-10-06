@@ -14,7 +14,7 @@ router = APIRouter(
 )
 
 
-@router.get('/', response_model=List[Operation])
+@router.get('/', response_model=List[Operation], summary='Получение операций')
 def get_operations(
         kind: Optional[OperationKind] = None,
         service: OperationsService = Depends(),
