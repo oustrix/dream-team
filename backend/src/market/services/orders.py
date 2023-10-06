@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List
 
-from fastapi import Depends
+from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from src.market import tables
@@ -17,18 +17,22 @@ class OrdersService:
     def get_order(self, order_id: int) -> tables.Order:
         order = (
             self.session
-            .query()
+            .query(tables.Order)
             .filter_by(id=order_id)
             .first()
         )
 
-        return order
+        if not order:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail='order not found'
+            )
 
     # TODO: make filters
     def get_orders(self) -> List[tables.Order]:
         orders = (
             self.session()
-            .query()
+            .query(tables.Order)
             .all()
         )
 
