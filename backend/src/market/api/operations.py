@@ -20,6 +20,17 @@ def get_operations(
         service: OperationsService = Depends(),
         user: User = Depends(get_current_user)
 ):
+    """
+    Получение списка операций.
+
+    - **kind**: тип операции (см. схему OperationKind)
+
+    \f
+    :param kind:
+    :param service:
+    :param user:
+    :return:
+    """
     return service.get_list(user.id, kind=kind)
 
 
