@@ -35,5 +35,6 @@ class OrderCreate(OrderBase):
     pass
 
 
-class OrderUpdate(Order):
-    pass
+class OrderUpdate(OrderBase):
+    status: OrderStatus
+    worker_id: Optional[int]
