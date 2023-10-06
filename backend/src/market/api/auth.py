@@ -26,6 +26,14 @@ def sign_in(
         form_data: OAuth2PasswordRequestForm = Depends(),
         service: AuthService = Depends()
 ):
+    """
+    Аутентификация пользователя через форму.
+
+    \f
+    :param form_data:
+    :param service:
+    :return:
+    """
     return service.authenticate_user(
         form_data.username,
         form_data.password
