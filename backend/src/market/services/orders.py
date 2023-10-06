@@ -30,13 +30,20 @@ class OrdersService:
 
         return order
 
-    # TODO: make filters
-    def get_orders(self) -> List[tables.Order]:
-        orders = (
-            self.session
-            .query(tables.Order)
-            .all()
-        )
+    def get_orders(self,
+                   order_status: OrderStatus = None,
+                   owner_id: int = None,
+                   worker_id: int = None) -> List[tables.Order]:
+        query = self.session.query(tables.Order)
+
+        if order_status:
+            query.filter_by(status=order_status)
+        if owner_id:
+            query.filter_by(owner_id=owner_id)
+        if worker_id:
+            query.filter_by(worker_id=worker_id)
+
+        orders = query.all()
 
         return orders
 
