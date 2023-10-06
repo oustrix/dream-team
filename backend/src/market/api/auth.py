@@ -34,4 +34,11 @@ def sign_in(
 
 @router.get('/user', response_model=User)
 def get_user(user: User = Depends(get_current_user)):
+    """
+    Получение информации о пользователе из JWT-токена.
+
+    \f
+    :param user:
+    :return:
+    """
     return user
