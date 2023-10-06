@@ -55,10 +55,23 @@ def get_order(
     return service.get_order(order_id)
 
 
-@router.post('/', response_model=Order)
+@router.post('/', response_model=Order, summary="Создание заказа")
 def create_order(
         order_data: OrderCreate,
         user: User = Depends(get_current_user),
         service: OrdersService = Depends(),
 ):
+    """
+    Первичное создание заказа.
+
+    - **title**: название заказа
+    - **description**: длинное описание заказа
+    - **reward**: сумма заказа
+
+    \f
+    :param order_data:
+    :param user:
+    :param service:
+    :return:
+    """
     return service.create_order(order_data, user)
