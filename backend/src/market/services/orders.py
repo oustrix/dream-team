@@ -28,13 +28,17 @@ class OrdersService:
                 detail='order not found'
             )
 
+        return order
+
     # TODO: make filters
     def get_orders(self) -> List[tables.Order]:
         orders = (
-            self.session()
+            self.session
             .query(tables.Order)
             .all()
         )
+
+        return orders
 
     def create_order(self, order_data: OrderCreate, user_data: User) -> tables.Order:
         order = tables.Order(**order_data.model_dump())
