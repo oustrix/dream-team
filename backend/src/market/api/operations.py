@@ -24,7 +24,6 @@ def get_operations(
     Получение списка операций.
 
     - **kind**: тип операции (см. схему OperationKind)
-
     \f
     :param kind:
     :param service:
@@ -40,4 +39,13 @@ def create_operation(
         service: OperationsService = Depends(),
         user: User = Depends(get_current_user)
 ):
+    """
+    Создание новой операции.
+    \f
+
+    :param operation_data:
+    :param service:
+    :param user:
+    :return:
+    """
     return service.create(user.id, operation_data)
