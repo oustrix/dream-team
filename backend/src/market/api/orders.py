@@ -3,7 +3,7 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends
 
 from src.market.models.auth import User
-from src.market.models.orders import Order, OrderCreate, OrderStatus
+from src.market.models.orders import Order, OrderCreate, OrderStatus, OrderUpdate
 from src.market.services.auth import get_current_user
 from src.market.services.orders import OrdersService
 
@@ -34,7 +34,7 @@ def get_orders(
     :param service:
     :return:
     """
-    return service.get_orders(status=status, owner_id=owner, worker_id=worker)
+    return service.get_orders(order_status=status, owner_id=owner, worker_id=worker)
 
 
 @router.get('/{order_id}', response_model=Order, summary="Получение заказа")
@@ -55,7 +55,7 @@ def get_order(
     return service.get_order(order_id)
 
 
-@router.post('/', response_model=Order, summary="Создание заказа")
+@router.post('/', response_model=Order, summary='Создание заказа')
 def create_order(
         order_data: OrderCreate,
         user: User = Depends(get_current_user),
