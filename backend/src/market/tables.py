@@ -38,3 +38,14 @@ class Order(Base):
     created_at = sa.Column(sa.Date)
     assigned_at = sa.Column(sa.Date)
     closed_at = sa.Column(sa.Date)
+
+
+class Retention(Base):
+    __tablename__ = 'retentions'
+
+    id = sa.Column(sa.Integer, primary_key=True)
+    user_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
+    order_id = sa.Column(sa.Integer, sa.ForeignKey('orders.id'))
+    amount = sa.Column(sa.Numeric(10, 2))
+    created_at = sa.Column(sa.Date)
+    deleted_at = sa.Column(sa.Date)
