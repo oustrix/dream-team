@@ -31,24 +31,3 @@ def get_operations(
     :return:
     """
     return service.get_list(user.id, kind=kind)
-
-
-@router.post('/', response_model=List[Operation], summary='Создание операции')
-def create_operation(
-        operation_data: OperationCreate,
-        service: OperationsService = Depends(),
-        user: User = Depends(get_current_user)
-):
-    """
-    Создание новой операции.
-
-    - **kind**: тип операции (см. схему OperationKind)
-    - **amount**: сумма операции
-    - **description**: описание операции (необязательно)
-    \f
-    :param operation_data:
-    :param service:
-    :param user:
-    :return:
-    """
-    return service.create(user.id, operation_data)
