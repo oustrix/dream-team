@@ -15,11 +15,11 @@ class OperationBase(BaseModel):
     kind: OperationKind
     amount: Decimal
     description: Optional[str]
+    date: date
 
 
 class Operation(OperationBase):
     id: int
-    date: date
 
     class Config:
         from_attributes = True
