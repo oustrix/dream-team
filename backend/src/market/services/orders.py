@@ -76,12 +76,35 @@ class OrdersService:
         return orders
 
     def create_order(self, order_data: OrderCreate, user_data: User) -> tables.Order:
+        exception_not_enough_money = HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Not enough money",
+            headers={
+                'WWW-Authenticate': 'Bearer'
+            }
+        )
+
+        if user_data.balance < order_data.reward:
+            raise exception_not_enough_money from None
+
         order = tables.Order(**order_data.model_dump())
         order.owner_id = user_data.id
         order.status = OrderStatus.OPEN
         order.created_at = datetime.utcnow()
-
         self.session.add(order)
+
+        user = tables.User(**user_data.model_dump())
+        user.balance -= order.reward
+        user.pending_money += order.reward
+        self.session.add(user)
+
+        retention = tables.Retention()
+        retention.created_at = datetime.utcnow()
+        retention.user_id = user.id
+        retention.amount = order.reward
+        retention.order_id = order.id
+        self.session.add(retention)
+
         self.session.commit()
 
         return order
