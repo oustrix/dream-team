@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 class ResponseBase(BaseModel):
     order_id: int
+    description: str
 
 
 class ResponseCreate(ResponseBase):
