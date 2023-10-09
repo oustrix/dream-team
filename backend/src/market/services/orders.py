@@ -154,7 +154,24 @@ class OrdersService:
         self.session.commit()
         return order
 
+    # TODO: добавить возможность принятый заказ по согласию обеих сторон
     def process_inprocess_order(self, user: User, old_data: tables.Order, new_data: OrderUpdate) -> tables.Order:
+        exception_wrong_status = HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="It is forbidden to decline in process order",
+            headers={
+                'WWW-Authenticate': 'Bearer'
+            }
+        )
+
+        exception_wrong_update = HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="It is forbidden to update title/description/reward for in process order",
+            headers={
+                'WWW-Authenticate': 'Bearer'
+            }
+        )
+
         order = old_data
 
         if new_data.status == OrderStatus.CLOSED:
@@ -184,6 +201,12 @@ class OrdersService:
             )
             retention.deleted_at = now
             self.session.add(retention)
+
+        elif new_data.status == OrderStatus.DECLINED:
+            raise exception_wrong_status from None
+
+        else:
+            raise exception_wrong_update
 
         self.session.commit()
         return order
