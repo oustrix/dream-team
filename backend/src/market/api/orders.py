@@ -75,3 +75,23 @@ def create_order(
     :return:
     """
     return service.create_order(order_data, user)
+
+
+@router.put('/{order_id}', response_model=Order, summary='Обновление заказа')
+def update_order(
+        order_id: int,
+        update_data: OrderUpdate,
+        user: User = Depends(get_current_user),
+        service: OrdersService = Depends()
+):
+    """
+    Обновление информации о заказе.
+
+
+    :param order_id:
+    :param update_data:
+    :param user:
+    :param service:
+    :return:
+    """
+    return service.update_order(order_id, user, update_data)
