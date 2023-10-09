@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 
 from fastapi import Depends, HTTPException, status
@@ -6,6 +7,7 @@ from sqlalchemy.orm import Session
 from src.market.database import get_session
 from src.market.models.auth import User
 from src.market import tables
+from src.market.models.responses import ResponseCreate
 
 
 class ResponsesService:
@@ -39,3 +41,13 @@ class ResponsesService:
         )
 
         return responses
+
+    def create_response(self, user: User, response_data: ResponseCreate) -> tables.Response:
+        response = tables.Response(**response_data.model_dump())
+        response.user_id = user.id
+        response.created_at = datetime.utcnow()
+
+        self.session.add(response)
+        self.session.commit()
+
+        return response
