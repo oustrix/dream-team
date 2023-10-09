@@ -54,3 +54,12 @@ class Retention(Base):
     amount = sa.Column(sa.Numeric(10, 2))
     created_at = sa.Column(sa.Date)
     deleted_at = sa.Column(sa.Date)
+
+
+class Response(Base):
+    __tablename__ = 'responses'
+
+    id = sa.Column(sa.Integer, primary_key=True)
+    order_id = sa.Column(sa.Integer, sa.ForeignKey('orders.id'))
+    user_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
+    created_at = sa.Column(sa.Date)
