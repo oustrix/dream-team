@@ -7,14 +7,37 @@ from sqlalchemy.orm import Session
 from src.market import tables
 from src.market.database import get_session
 from src.market.models.auth import User
-from src.market.models.orders import OrderCreate, OrderStatus
+from src.market.models.orders import OrderCreate, OrderStatus, OrderUpdate
+
+
+def process_open_order(old_data: tables.Order, new_data: OrderUpdate) -> tables.Order:
+    order = old_data
+
+    if new_data.worker_id is not None:
+        order.worker_id = new_data.worker_id
+        order.status = OrderStatus.IN_PROCESS
+        order.assigned_at = datetime.utcnow()
+
+    elif new_data.status == OrderStatus.DECLINED or new_data.status == OrderStatus.CLOSED:
+        order.status = OrderStatus.DECLINED
+        order.closed_at = datetime.utcnow()
+
+    else:
+        for key, value in new_data:
+            setattr(order, key, value)
+
+    return order
+
+
+def process_inprocess_order(old_data: tables.Order, new_data: OrderUpdate) -> tables.Order:
+    order = old_data
 
 
 class OrdersService:
     def __init__(self, session: Session = Depends(get_session)):
         self.session = session
 
-    def get_order(self, order_id: int) -> tables.Order:
+    def _get(self, order_id: int) -> tables.Order:
         order = (
             self.session
             .query(tables.Order)
@@ -22,10 +45,15 @@ class OrdersService:
             .first()
         )
 
+        return order
+
+    def get_order(self, order_id: int) -> tables.Order:
+        order = self._get(order_id)
+
         if not order:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail='order not found'
+                detail='Order not found'
             )
 
         return order
