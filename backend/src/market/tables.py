@@ -62,4 +62,5 @@ class Response(Base):
     id = sa.Column(sa.Integer, primary_key=True)
     order_id = sa.Column(sa.Integer, sa.ForeignKey('orders.id'))
     user_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
+    description = sa.Column(sa.Text)
     created_at = sa.Column(sa.Date)
