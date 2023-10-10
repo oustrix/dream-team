@@ -48,6 +48,17 @@ li {
   list-style: none;
 }
 
+input,
+button {
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 16px;
+  color: #fff;
+
+  background: none;
+  border: none;
+  outline: none;
+}
+
 .app {
   width: 1274px;
   margin: 0 auto;
