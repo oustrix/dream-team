@@ -47,3 +47,8 @@ li {
   padding: 0;
   list-style: none;
 }
+
+.app {
+  width: 1274px;
+  margin: 0 auto;
+}
