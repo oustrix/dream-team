@@ -22,3 +22,14 @@
     column-gap: 10px;
     align-items: center;
 }
+
+.avatar {
+    width: 36px;
+    height: 36px;
+
+    background: var(--dark);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}
