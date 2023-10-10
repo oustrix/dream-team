@@ -33,3 +33,9 @@
     background-size: cover;
     border-radius: 50%;
 }
+
+.username {
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--grey);
+}
