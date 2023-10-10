@@ -59,6 +59,10 @@ button {
   outline: none;
 }
 
+input {
+  padding: 0;
+}
+
 .app {
   width: 1274px;
   margin: 0 auto;
