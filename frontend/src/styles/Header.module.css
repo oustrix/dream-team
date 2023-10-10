@@ -66,3 +66,18 @@
     fill: var(--dark-sea);
 }
   
+.input {
+    flex-grow: 1;
+  }
+  
+.input input {
+    width: 100%;
+
+    font-family: Montserrat, Roboto, sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--grey);
+
+    background: none;
+    outline: none;
+}
