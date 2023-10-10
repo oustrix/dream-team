@@ -5,7 +5,6 @@ h4,
 h5,
 h6,
 p {
-  margin: 0;
   padding: 0;
   font-size: 16px;
   line-height: 24px;
@@ -13,6 +12,7 @@ p {
 
 * {
   box-sizing: border-box;
+  margin: 0
 }
 
 img {
@@ -27,7 +27,6 @@ a {
 
 ul,
 li {
-  margin: 0;
   padding: 0;
   list-style: none;
 }
