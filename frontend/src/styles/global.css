@@ -1,3 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0
+}
+
+body {
+  overflow-x: hidden;
+
+  margin: 0;
+  padding: 0;
+  padding-bottom: 20px;
+
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #fff;
+
+  background: var(--bg);
+}
+
+
 h1,
 h2,
 h3,
@@ -8,11 +30,6 @@ p {
   padding: 0;
   font-size: 16px;
   line-height: 24px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0
 }
 
 img {
