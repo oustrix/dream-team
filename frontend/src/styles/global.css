@@ -1,8 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0
-}
-
 body {
   overflow-x: hidden;
 
@@ -19,7 +14,6 @@ body {
   background: var(--bg);
 }
 
-
 h1,
 h2,
 h3,
@@ -27,25 +21,19 @@ h4,
 h5,
 h6,
 p {
+  margin: 0;
   padding: 0;
   font-size: 16px;
   line-height: 24px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 img {
   max-width: 100%;
   height: auto;
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
-}
-
-ul,
-li {
-  padding: 0;
-  list-style: none;
 }
 
 input,
@@ -59,8 +47,16 @@ button {
   outline: none;
 }
 
-input {
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul,
+li {
+  margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .app {
@@ -68,8 +64,75 @@ input {
   margin: 0 auto;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
 
 .icon {
   width: 12px;
   height: 12px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+section {
+  background: var(--dark);
+  border-radius: 6px;
+}
+
+button {
+  cursor: pointer;
+
+  padding: 9px 20px;
+
+  font-weight: 600;
+  line-height: 20px;
+
+  background: var(--violet-dark);
+  border-radius: 6px;
+}
+
+button:hover {
+  background: var(--violet);
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+
+  /* display: none; <- Crashes Chrome on hover */
+  appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield; /* Firefox */
+}
+
+input {
+  padding: 0;
+}
+
+.preloader {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
 }
