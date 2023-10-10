@@ -26,6 +26,7 @@
 .avatar {
     width: 36px;
     height: 36px;
+    margin-left: 200px;
 
     background: var(--dark);
     background-repeat: no-repeat;
