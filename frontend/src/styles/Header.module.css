@@ -18,15 +18,17 @@
 
 .user {
     cursor: pointer;
+
     display: flex;
     column-gap: 10px;
     align-items: center;
+
+    margin-left: 200px;
 }
 
 .avatar {
     width: 36px;
     height: 36px;
-    margin-left: 200px;
 
     background: var(--dark);
     background-repeat: no-repeat;
@@ -69,7 +71,7 @@
   
 .input {
     flex-grow: 1;
-  }
+}
   
 .input input {
     width: 100%;
@@ -81,4 +83,5 @@
 
     background: none;
     outline: none;
-  }
+}
+  
