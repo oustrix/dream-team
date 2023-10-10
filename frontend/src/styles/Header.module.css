@@ -39,3 +39,19 @@
     line-height: 12px;
     color: var(--grey);
 }
+
+.form {
+    position: relative;
+
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+
+    width: 300px;
+    height: 27px;
+    padding: 7px 10px;
+
+    background: var(--dark);
+    border-radius: 6px;
+  }
+  
