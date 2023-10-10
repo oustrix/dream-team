@@ -16,3 +16,9 @@
     justify-content: space-between;
 }
 
+.user {
+    cursor: pointer;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
