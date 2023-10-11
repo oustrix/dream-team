@@ -5,4 +5,9 @@
     width: 304px;
     height: 423px;
     padding: 24px;
-  }
+}
+
+.title {
+    font-weight: 600;
+    line-height: 20px;
+}
