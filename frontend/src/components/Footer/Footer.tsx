@@ -21,6 +21,14 @@ export const Footer = () => {
           ♥
         </a>
       </div>
+
+      <div className={styles.socials}>
+        <a href='https://github.com/oustrix/itip-project' target='_blank' rel='noreferrer'>
+          <svg className='icon' width='24px' height='24px'>
+            <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#github`} />
+          </svg>
+        </a>
+      </div>
     </section>
   )
 }
