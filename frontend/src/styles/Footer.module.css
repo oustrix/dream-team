@@ -14,3 +14,13 @@
 .logo a {
     height: 100%;
 }
+
+.rights {
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--dark-sea);
+}
+  
+.rights a {
+    color: var(--violet);
+}
