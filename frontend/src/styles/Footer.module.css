@@ -24,3 +24,18 @@
 .rights a {
     color: var(--violet);
 }
+
+.socials {
+    display: flex;
+    gap: 15px;
+  }
+  
+.socials svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--dark-sea);
+}
+  
+.socials svg:hover {
+    fill: var(--violet);
+}
