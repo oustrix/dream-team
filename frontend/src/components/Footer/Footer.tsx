@@ -14,6 +14,13 @@ export const Footer = () => {
           <img src={LOGO} alt='W4F' />
         </Link>
       </div>
+
+      <div className={styles.rights}>
+        Developed for ITaP{' '}
+        <a href='https://youtu.be/dQw4w9WgXcQ' target='_blank' rel='noreferrer'>
+          ♥
+        </a>
+      </div>
     </section>
   )
 }
