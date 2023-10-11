@@ -5,4 +5,12 @@
 
     margin-top: 20px;
     padding: 24px;
-  }
+}
+
+.logo {
+    width: 61px;
+}
+
+.logo a {
+    height: 100%;
+}
