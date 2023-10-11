@@ -11,3 +11,10 @@
     font-weight: 600;
     line-height: 20px;
 }
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    margin-top: 32px;
+  }
