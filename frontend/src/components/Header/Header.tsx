@@ -13,6 +13,14 @@ export const Header = () => {
           <img src={LOGO} alt='W4F' />
         </Link>
       </div>
+
+      <div className={styles.info}>
+        <div></div>
+        <div className={styles.user}>
+          <div className={styles.avatar} style={{ backgroundImage: 'url()' }} />
+          <div className={styles.username}>Guest</div>
+        </div>
+      </div>
     </div>
   )
 }
