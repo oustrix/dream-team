@@ -23,7 +23,6 @@
     font-size: 14px;
     line-height: 17px;
     color: var(--dark-sea);
-    text-transform: capitalize;
 }
   
 .link:hover {
