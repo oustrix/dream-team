@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
+import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
+import { getCategories } from '../../features/categories/categoriesSlice'
+import { AppDispatch } from '../../features/store'
 import styles from '../../styles/Sidebar.module.css'
 import { ROUTES } from '../../utils/routes'
 
 export const Sidebar = () => {
+  const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [dispatch])
   return (
     <section className={styles.sidebar}>
       <div className={styles.title}>КАТЕГОРИИ</div>
