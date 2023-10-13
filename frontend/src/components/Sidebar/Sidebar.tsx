@@ -29,17 +29,39 @@ export const Sidebar = () => {
       <div className={styles.title}>КАТЕГОРИИ</div>
       <nav>
         <ul className={styles.menu}>
-          {list.slice(0, 12).map(({ id, name }: any) => (
-            <li key={id}>
-              <NavLink
-                // eslint-disable-next-line eqeqeq
-                className={() => `${styles.link} ${id == currentCategory ? styles.active : ''}`}
-                to={`${ROUTES.ORDERS}/?category=${id}`}
-              >
-                {name}
+          {list.length > 12
+            ? list.slice(0, 11).map(({ id, name }: any) => (
+                <li key={id}>
+                  <NavLink
+                    // eslint-disable-next-line eqeqeq
+                    className={() => `${styles.link} ${id == currentCategory ? styles.active : ''}`}
+                    to={`${ROUTES.ORDERS}/?category=${id}`}
+                  >
+                    {name}
+                  </NavLink>
+                </li>
+              ))
+            : list.map(({ id, name }: any) => (
+                <li key={id}>
+                  <NavLink
+                    // eslint-disable-next-line eqeqeq
+                    className={() => `${styles.link} ${id == currentCategory ? styles.active : ''}`}
+                    to={`${ROUTES.ORDERS}/?category=${id}`}
+                  >
+                    {name}
+                  </NavLink>
+                </li>
+              ))}
+
+          {list.length > 12 ? (
+            <li>
+              <NavLink className={styles.link} to={ROUTES.CATEGORIES}>
+                Другие
               </NavLink>
             </li>
-          ))}
+          ) : (
+            ''
+          )}
         </ul>
       </nav>
     </section>
