@@ -14,10 +14,9 @@ class WorkersService:
                     amount: int = None) -> List[tables.Worker]:
         query = self.session.query(tables.Worker)
 
-        workers: List[tables.Worker]
         if amount:
-            workers = query.count(amount)
-        else:
-            workers = query.all()
+            query.limit(amount)
+
+        workers = query.all()
 
         return workers
