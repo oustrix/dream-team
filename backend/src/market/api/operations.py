@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from fastapi import Depends
 
 from ..models.auth import User
-from ..models.operations import Operation, OperationCreate, OperationKind
+from ..models.operations import Operation, OperationKind
 from ..services.auth import get_current_user
 from ..services.operations import OperationsService
 
