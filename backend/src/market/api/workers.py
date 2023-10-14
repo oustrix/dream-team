@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from fastapi import APIRouter, Depends
 
@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 
-@router.get('/', response_model=Worker, summary='Получение исполнителей')
+@router.get('/', response_model=List[Worker], summary='Получение исполнителей')
 def get_workers(
         amount: Optional[int] = None,
         service: WorkersService = Depends()
