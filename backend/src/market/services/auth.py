@@ -95,14 +95,22 @@ class AuthService:
             role=user_data.role
         )
         self.session.add(user)
+        self.session.commit()
 
-        if user.role == UserRole.WORKER:
+        if user.role == UserRole.WORKExR:
+            created_user = (
+                self.session
+                .query(tables.User)
+                .filter_by(
+                    email=user.email
+                )
+                .first()
+            )
             worker = tables.Worker(
-                user_id=user.id
+                user_id=created_user.id
             )
             self.session.add(worker)
-
-        self.session.commit()
+            self.session.commit()
 
         return self.create_token(user)
 
