@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { stat } from 'fs'
-
 import { BASE_URL } from '../../utils/constants'
 
 export const getPoster = createAsyncThunk('poster/getPoster', async (_, thunkAPI) => {
