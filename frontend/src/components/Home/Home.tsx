@@ -23,7 +23,8 @@ export const Home = () => {
         <Sidebar />
         <Poster />
       </div>
-      <BestWorkers workers={workers} amount={8} />
+      <div style={{ marginTop: '30px' }}></div>
+      <BestWorkers workers={workers} amount={6} />
     </div>
   )
 }
