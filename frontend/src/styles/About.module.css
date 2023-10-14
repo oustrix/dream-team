@@ -17,7 +17,7 @@
 .info {
     min-width: 45%;
     max-width: 45%;
-    padding: 1rem;
+    padding: 1.5rem;
 
     background: var(--bg);
     border-radius: 8px;
