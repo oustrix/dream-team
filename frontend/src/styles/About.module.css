@@ -22,3 +22,9 @@
     background: var(--bg);
     border-radius: 8px;
 }
+
+.text {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+}
