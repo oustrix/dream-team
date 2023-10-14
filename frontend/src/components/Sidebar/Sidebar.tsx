@@ -29,7 +29,7 @@ export const Sidebar = () => {
       <div className={styles.title}>КАТЕГОРИИ</div>
       <nav>
         <ul className={styles.menu}>
-          {list.slice(0, 9).map(({ id, name }: any) => (
+          {list.slice(0, 12).map(({ id, name }: any) => (
             <li key={id}>
               <NavLink
                 className={() => `${styles.link} ${id == currentCategory ? styles.active : ''}`}
