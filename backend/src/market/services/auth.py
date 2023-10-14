@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 
 from .. import tables
 from ..database import get_session
-from ..models.auth import User, Token, UserCreate
+from ..models.auth import User, Token, UserCreate, UserRole
 from ..settings import settings
 
 oauth_scheme = OAuth2PasswordBearer(tokenUrl='/auth/sign-in')
@@ -91,10 +91,17 @@ class AuthService:
         user = tables.User(
             email=user_data.email,
             username=user_data.username,
-            password_hash=self.hash_password(user_data.password)
+            password_hash=self.hash_password(user_data.password),
+            role=user_data.role
         )
-
         self.session.add(user)
+
+        if user.role == UserRole.WORKER:
+            worker = tables.Worker(
+                user_id=user.id
+            )
+            self.session.add(worker)
+
         self.session.commit()
 
         return self.create_token(user)
