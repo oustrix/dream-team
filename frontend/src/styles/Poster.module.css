@@ -4,6 +4,15 @@
   margin-left: 30px;
 }
 
+.title {
+  font-size: 119px;
+  font-weight: 900;
+  line-height: 145px;
+  color: var(--bg);
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .image {
   position: relative;
   flex-grow: 1;
