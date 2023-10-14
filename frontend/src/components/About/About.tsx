@@ -28,7 +28,7 @@ export const About = () => {
             <br /> <br />
             Да начнутся голодные игры!
             <br /> <br />
-            <button>Разместить заказ</button>
+            <button>Разместить приманку</button>
           </div>
         </div>
         <div className={styles.info}>
@@ -56,7 +56,7 @@ export const About = () => {
             <br /> <br />
             Да начнутся голодные игры!
             <br /> <br />
-            <button>Разместить заказ</button>
+            <button>Отправиться на охоту</button>
           </div>
         </div>
       </div>
