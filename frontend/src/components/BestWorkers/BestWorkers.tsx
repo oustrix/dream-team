@@ -6,7 +6,7 @@ import { ROUTES } from '../../utils/routes'
 
 export const BestWorkers = ({ workers = [] }) => {
   return (
-    <section>
+    <section className={styles.workers}>
       <h2>Лучшие исполнители</h2>
       <div className={styles.list}>
         {workers.map(({ id, image, name, category }) => (
