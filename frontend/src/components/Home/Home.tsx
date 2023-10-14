@@ -24,7 +24,7 @@ export const Home = () => {
         <Poster />
       </div>
       <div style={{ marginTop: '30px' }}></div>
-      <BestWorkers workers={workers} amount={6} />
+      <BestWorkers workers={workers} amount={9} />
     </div>
   )
 }

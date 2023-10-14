@@ -5,7 +5,7 @@ import { BASE_URL } from '../../utils/constants'
 
 export const getWorkers = createAsyncThunk('workers/getWorkers', async (_, thunkAPI) => {
   try {
-    const res = await axios(`${BASE_URL}/users/?kind=worker&amount=5`)
+    const res = await axios(`${BASE_URL}/users/?kind=worker&amount=9`)
     return res.data
   } catch (err) {
     console.log(err)
