@@ -7,3 +7,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.info {
+    min-width: 45%;
+    max-width: 45%;
+}
