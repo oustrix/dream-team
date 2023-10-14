@@ -48,3 +48,9 @@
   font-weight: 600;
   line-height: 18px;
 }
+
+.category {
+  margin-top: 1rem;
+  background-color: var(--violet);
+  border-radius: 5px;
+}
