@@ -38,3 +38,7 @@
 
   image-rendering: auto;
 }
+
+.user_info {
+    margin-left: 1rem;
+}
