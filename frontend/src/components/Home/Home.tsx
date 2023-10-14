@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch } from '../../features/store'
 import { getWorkers } from '../../features/workers/workersSlice'
+import { About } from '../About/About'
 import { BestWorkers } from '../BestWorkers/BestWorkers'
 import { Poster } from '../Poster/Poster'
 import { Sidebar } from '../Sidebar/Sidebar'
@@ -25,6 +26,8 @@ export const Home = () => {
       </div>
       <div style={{ marginTop: '30px' }}></div>
       <BestWorkers workers={workers} amount={9} />
+      <div style={{ marginTop: '30px' }}></div>
+      <About />
     </div>
   )
 }
