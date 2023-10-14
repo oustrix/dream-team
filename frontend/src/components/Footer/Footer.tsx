@@ -23,7 +23,7 @@ export const Footer = () => {
 
       <div className={styles.rights}>
         Developed for ITaP{' '}
-        <a href='https://youtu.be/dQw4w9WgXcQ' target='_blank' rel='noreferrer'>
+        <a href='https://youtu.be/XfqOB4hvxlY' target='_blank' rel='noreferrer'>
           ♥
         </a>
       </div>
