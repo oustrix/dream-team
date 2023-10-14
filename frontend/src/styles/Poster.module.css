@@ -23,6 +23,12 @@
   padding-left: 42px;
 }
 
+.subtitle {
+  line-height: 20px;
+  color: var(--sea);
+  text-transform: uppercase;
+}
+
 .image {
   position: relative;
   flex-grow: 1;
