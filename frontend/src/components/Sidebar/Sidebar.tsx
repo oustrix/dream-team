@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useSearchParams } from 'react-router-dom'
 
 import { getCategories } from '../../features/categories/categoriesSlice'
 import { AppDispatch } from '../../features/store'
@@ -13,17 +13,30 @@ export const Sidebar = () => {
 
   const dispatch = useDispatch<AppDispatch>()
 
+  const [searchParams] = useSearchParams()
+  const [currentCategory, setCurrentCategory] = useState(searchParams.get('category'))
+
   useEffect(() => {
     dispatch(getCategories())
   }, [dispatch])
+
+  useEffect(() => {
+    setCurrentCategory(searchParams.get('category'))
+  }, [searchParams])
+
   return (
     <section className={styles.sidebar}>
       <div className={styles.title}>КАТЕГОРИИ</div>
       <nav>
         <ul className={styles.menu}>
-          {list.map(({ id, name }: any) => (
+          {list.slice(0, 9).map(({ id, name }: any) => (
             <li key={id}>
-              <NavLink to={`${ROUTES.ORDERS}/?category=${id}`}>{name}</NavLink>
+              <NavLink
+                className={() => `${styles.link} ${id == currentCategory ? styles.active : ''}`}
+                to={`${ROUTES.ORDERS}/?category=${id}`}
+              >
+                {name}
+              </NavLink>
             </li>
           ))}
         </ul>
