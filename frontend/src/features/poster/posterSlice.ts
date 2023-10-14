@@ -16,7 +16,6 @@ export const getPoster = createAsyncThunk('poster/getPoster', async (_, thunkAPI
 })
 
 const posterSlice = createSlice({
-  
   name: 'poster',
   initialState: {
     url: '',
