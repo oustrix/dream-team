@@ -72,3 +72,11 @@ class Category(Base):
 
     id = sa.Column(sa.Integer, primary_key=True)
     name = sa.Column(sa.String)
+
+
+class Worker(Base):
+    __tablename__ = 'workers'
+
+    id = sa.Column(sa.Integer, primary_key=True)
+    user_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
+    main_category = sa.Column(sa.Integer, sa.ForeignKey('categories.id'))
