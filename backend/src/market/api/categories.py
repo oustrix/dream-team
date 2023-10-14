@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Depends
 
 from src.market.services.categories import CategoriesService
-from src.market.tables import Category
+from src.market.models.categories import Category
 
 router = APIRouter(
     prefix='/categories',
