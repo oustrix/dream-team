@@ -7,7 +7,10 @@
 
 .worker {
     overflow: hidden;
+
     width: calc(100% / 5 - 20px);
+    padding: 16px;
+
     background: var(--bg);
     border-radius: 8px;
 }
