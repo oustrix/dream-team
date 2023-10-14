@@ -64,3 +64,10 @@ class Response(Base):
     user_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
     description = sa.Column(sa.Text)
     created_at = sa.Column(sa.Date)
+
+
+class Category(Base):
+    __tablename__ = 'categories'
+
+    id = sa.Column(sa.Integer, primary_key=True)
+    name = sa.Column(sa.String)
