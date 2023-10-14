@@ -39,3 +39,17 @@
 .socials svg:hover {
     fill: var(--violet);
 }
+
+.link {
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--dark-sea);
+}
+  
+.link:hover {
+    color: var(--white);
+}
+  
+.link.active {
+    color: var(--violet);
+}
