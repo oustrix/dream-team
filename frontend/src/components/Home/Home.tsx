@@ -1,5 +1,11 @@
 import React from 'react'
 
+import { Sidebar } from '../Sidebar/Sidebar'
+
 export const Home = () => {
-  return <div>Home</div>
+  return (
+    <div>
+      <Sidebar />
+    </div>
+  )
 }
