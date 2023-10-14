@@ -2,3 +2,8 @@
     width: 100%;
     padding: 25px 22px;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
