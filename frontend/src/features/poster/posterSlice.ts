@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+import { stat } from 'fs'
+
 import { BASE_URL } from '../../utils/constants'
 
-export const getPosters = createAsyncThunk('posters/getPosters', async (_, thunkAPI) => {
+export const getPoster = createAsyncThunk('poster/getPoster', async (_, thunkAPI) => {
   try {
-    const res = await axios(`${BASE_URL}/posters`)
+    const res = await axios(`${BASE_URL}/poster`)
     return res.data
   } catch (err) {
     console.log(err)
@@ -13,25 +15,26 @@ export const getPosters = createAsyncThunk('posters/getPosters', async (_, thunk
   }
 })
 
-const postersSlice = createSlice({
-  name: 'posters',
+const posterSlice = createSlice({
+  
+  name: 'poster',
   initialState: {
-    list: [],
+    url: '',
     isLoading: true,
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getPosters.pending, (state) => {
+    builder.addCase(getPoster.pending, (state) => {
       state.isLoading = true
     })
-    builder.addCase(getPosters.fulfilled, (state, { payload }) => {
-      state.list = payload
+    builder.addCase(getPoster.fulfilled, (state, { payload }) => {
+      state.url = payload
       state.isLoading = false
     })
-    builder.addCase(getPosters.rejected, (state) => {
+    builder.addCase(getPoster.rejected, (state) => {
       state.isLoading = false
     })
   },
 })
 
-export default postersSlice.reducer
+export default posterSlice.reducer

@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import categoriesSlice from './categories/categoriesSlice'
-import postersSlice from './posters/postersSlice'
+import posterSlice from './poster/posterSlice'
 
 export const store = configureStore({
   reducer: {
     categories: categoriesSlice,
-    posters: postersSlice,
+    poster: posterSlice,
   },
   devTools: true,
 })
