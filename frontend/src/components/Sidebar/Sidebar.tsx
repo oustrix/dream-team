@@ -56,7 +56,7 @@ export const Sidebar = () => {
           {list.length > 12 ? (
             <li>
               <NavLink className={styles.link} to={ROUTES.CATEGORIES}>
-                Другие
+                Другие &gt;&gt;
               </NavLink>
             </li>
           ) : (
