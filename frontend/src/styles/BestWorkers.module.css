@@ -7,13 +7,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: space-between;
+
   margin-top: 24px;
 }
 
 .worker {
   overflow: hidden;
 
-  width: calc(100% / 5 - 20px);
+  min-width: 350px;
+  max-width: 350px;
   padding: 1rem;
 
   background: var(--bg);
