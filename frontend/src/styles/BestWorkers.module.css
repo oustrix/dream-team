@@ -9,7 +9,7 @@
     overflow: hidden;
 
     width: calc(100% / 5 - 20px);
-    padding: 16px;
+    padding: 1rem;
 
     background: var(--bg);
     border-radius: 8px;
