@@ -14,4 +14,8 @@
 
 .worker:nth-child(5n) {
     width: calc(100% / 5);
-  }
+}
+
+.user {
+    display: flex;
+}
