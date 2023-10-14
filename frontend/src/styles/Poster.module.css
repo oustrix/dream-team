@@ -49,12 +49,12 @@
 .image {
   position: relative;
   flex-grow: 1;
-  height: 250px;
+  height: 230px;
 }
 
 .image img {
   position: absolute;
-  right: 10%;
+  right: 15%;
   bottom: -15%;
-  max-width: unset;
+  max-width: 230px;
 }
