@@ -42,6 +42,7 @@
 }
 
 .button {
+  max-width: 50%;
   margin-top: 24px;
   text-align: center;
 }
@@ -54,7 +55,7 @@
 
 .image img {
   position: absolute;
-  right: 15%;
-  bottom: -15%;
+  right: 25%;
+  bottom: -10%;
   max-width: 230px;
 }
