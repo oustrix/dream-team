@@ -1,11 +1,18 @@
+from enum import Enum
+
 from pydantic import BaseModel
+
+
+class UserRole(str, Enum):
+    WORKER = 'worker'
+    CUSTOMER = 'customer'
 
 
 class BaseUser(BaseModel):
     email: str
     name: str
     surname: str
-    role: str
+    role: UserRole
 
 
 class UserCreate(BaseUser):
