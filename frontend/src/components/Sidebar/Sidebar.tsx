@@ -32,6 +32,7 @@ export const Sidebar = () => {
           {list.slice(0, 12).map(({ id, name }: any) => (
             <li key={id}>
               <NavLink
+                // eslint-disable-next-line eqeqeq
                 className={() => `${styles.link} ${id == currentCategory ? styles.active : ''}`}
                 to={`${ROUTES.ORDERS}/?category=${id}`}
               >
