@@ -3,9 +3,14 @@
     padding: 25px 22px;
 }
 
-.container {
+.container {    
     display: flex;
     justify-content: space-between;
+    margin-top: 2em;
+}
+
+.subtitle {
+    text-align: center;
 }
 
 .info {
