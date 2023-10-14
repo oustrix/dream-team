@@ -5,6 +5,9 @@
 
     margin-top: 20px;
     padding: 24px;
+
+    font-size: 12px;
+    line-height: 15px;
 }
 
 .logo {
@@ -16,8 +19,6 @@
 }
 
 .rights {
-    font-size: 12px;
-    line-height: 15px;
     color: var(--dark-sea);
 }
   
@@ -41,8 +42,6 @@
 }
 
 .link {
-    font-size: 14px;
-    line-height: 17px;
     color: var(--dark-sea);
 }
   
@@ -52,4 +51,11 @@
   
 .link.active {
     color: var(--violet);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 370px;
 }
