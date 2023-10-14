@@ -26,7 +26,7 @@ export const Sidebar = () => {
 
   return (
     <section className={styles.sidebar}>
-      <div className={styles.title}>КАТЕГОРИИ</div>
+      <div className={styles.title}>ВЫБЕРИТЕ КАТЕГОРИЮ</div>
       <nav>
         <ul className={styles.menu}>
           {list.length > 12
