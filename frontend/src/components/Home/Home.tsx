@@ -1,11 +1,15 @@
 import React from 'react'
 
+import { Poster } from '../Poster/Poster'
 import { Sidebar } from '../Sidebar/Sidebar'
 
 export const Home = () => {
   return (
     <div>
-      <Sidebar />
+      <div>
+        <Sidebar />
+        <Poster />
+      </div>
     </div>
   )
 }
