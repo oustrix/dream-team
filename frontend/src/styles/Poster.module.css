@@ -2,3 +2,16 @@
     position: relative;
     flex-grow: 1;
   }
+
+  .image {
+    position: relative;
+    flex-grow: 1;
+    height: 250px;
+  }
+  
+  .image img {
+    position: absolute;
+    right: 10%;
+    bottom: -15%;
+    max-width: unset;
+  }
