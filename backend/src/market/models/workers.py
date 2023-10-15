@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
 
@@ -8,4 +10,4 @@ class WorkerBase(BaseModel):
 class Worker(WorkerBase):
     id: int
     user_id: int
-    main_category: int
+    main_category: Optional[int]
