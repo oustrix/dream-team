@@ -17,7 +17,7 @@ class WorkersService:
             self.session.query(tables.Worker.id,
                                tables.Worker.user_id,
                                tables.Worker.main_category,
-                               tables.Category.name,
+                               tables.Category.name.label('category_name'),
                                tables.User.photo,
                                tables.User.name,
                                tables.User.surname)
