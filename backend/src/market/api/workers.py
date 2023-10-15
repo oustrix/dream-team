@@ -16,4 +16,13 @@ def get_workers(
         amount: Optional[int] = None,
         service: WorkersService = Depends()
 ):
+    """
+    Получение списка исполнителей.
+
+    - **amount**: количество работников
+    \f
+    :param amount:
+    :param service:
+    :return:
+    """
     return service.get_workers(amount)
