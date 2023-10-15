@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { NavLink } from 'react-router-dom'
+
 import styles from '../../styles/About.module.css'
 
 export const About = () => {
@@ -56,7 +58,9 @@ export const About = () => {
             <br /> <br />
             Да начнутся голодные игры!
             <br /> <br />
-            <button>Отправиться на охоту</button>
+            <NavLink to='/orders'>
+              <button>Отправиться на охоту</button>
+            </NavLink>
           </div>
         </div>
       </div>
