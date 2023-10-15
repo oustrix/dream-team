@@ -11,6 +11,7 @@ from jose import (
 )
 from passlib.hash import bcrypt
 from pydantic import ValidationError
+from sqlalchemy import exc
 from sqlalchemy.orm import Session
 
 from .. import tables
@@ -96,9 +97,17 @@ class AuthService:
             role=user_data.role
         )
         self.session.add(user)
-        self.session.commit()
 
-        if user.role == UserRole.WORKExR:
+        try:
+            self.session.commit()
+        except exc.IntegrityError as ie:
+            if ('users_email_key' in ie.args[0]) and ('duplicate' in ie.args[0]):
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail='Duplicate email'
+                )
+
+        if user.role == UserRole.WORKER:
             created_user = (
                 self.session
                 .query(tables.User)
