@@ -11,7 +11,7 @@ class Worker(WorkerBase):
     id: int
     user_id: int
     main_category: Optional[int]
-    category_name: Optional[str] = None
+    category_name: Optional[str]
     photo: Optional[str]
     name: str
     surname: str
