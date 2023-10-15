@@ -11,7 +11,7 @@ class User(Base):
     )
 
     id = sa.Column(sa.Integer, primary_key=True)
-    email = sa.Column(sa.Integer, unique=True)
+    email = sa.Column(sa.String, unique=True)
     name = sa.Column(sa.Text)
     surname = sa.Column(sa.Text)
     balance = sa.Column(sa.Numeric(10, 2), default=0)
