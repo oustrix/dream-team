@@ -11,3 +11,4 @@ class Worker(WorkerBase):
     id: int
     user_id: int
     main_category: Optional[int]
+    photo: Optional[str]
