@@ -22,7 +22,7 @@ class UserCreate(BaseUser):
 class User(BaseUser):
     id: int
     balance: int
-    pending_balance: int
+    pending_money: int
 
     class Config:
         from_attributes = True

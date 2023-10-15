@@ -94,7 +94,9 @@ class AuthService:
             name=user_data.name,
             surname=user_data.surname,
             password_hash=self.hash_password(user_data.password),
-            role=user_data.role
+            role=user_data.role,
+            balance=0,
+            pending_money=0
         )
         self.session.add(user)
 
