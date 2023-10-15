@@ -15,6 +15,18 @@ tags_metadata = [
     {
         'name': 'orders',
         'description': 'Операции с заказами'
+    },
+    {
+        'name': 'responses',
+        'description': 'Операции с откликами',
+    },
+    {
+        'name': 'categories',
+        'description': 'Операции с категориями',
+    },
+    {
+        'name': 'workers',
+        'description': 'Операции с работниками'
     }
 ]
 
