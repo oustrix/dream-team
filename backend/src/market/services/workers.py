@@ -14,8 +14,15 @@ class WorkersService:
     def get_workers(self,
                     amount: int = None) -> List[tables.Worker]:
         query = (
-            self.session.query(tables.Worker.id, tables.Worker.user_id, tables.Worker.main_category, tables.User.photo)
+            self.session.query(tables.Worker.id,
+                               tables.Worker.user_id,
+                               tables.Worker.main_category,
+                               tables.Category.name,
+                               tables.User.photo,
+                               tables.User.name,
+                               tables.User.surname)
             .join(tables.User, tables.Worker.user_id == tables.User.id)
+            .outerjoin(tables.Category, tables.Worker.main_category == tables.Category.id)
         )
 
         if amount:
