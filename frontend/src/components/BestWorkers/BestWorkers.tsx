@@ -7,20 +7,20 @@ import { ROUTES } from '../../utils/routes'
 export const BestWorkers = ({ workers = [], amount }: { workers: []; amount: number }) => {
   const list = workers.filter((_, i) => i < amount)
 
+  console.log(list)
   return (
     <section className={styles.workers}>
       <h2>Лучшие исполнители</h2>
       <div className={styles.list}>
-        {list.map(({ id, image, name, category }) => (
+        {list.map(({ id, photo, name, surname, category_name }) => (
           <Link to={`${ROUTES.USERS}/${id}`} key={id} className={styles.worker}>
             <div className={styles.user}>
               <div className={styles.avatar}>
-                <img src={image} alt={name} />
+                <img src={photo} alt={`${name} ${surname}`} />
               </div>
-
               <div className={styles.user_info}>
-                <div className={styles.name}>{name}</div>
-                <div className={styles.category}>{category}</div>
+                <div className={styles.name}>{`${name} ${surname}`}</div>
+                {category_name ? <div className={styles.category}>{category_name}</div> : ''}
               </div>
             </div>
           </Link>
