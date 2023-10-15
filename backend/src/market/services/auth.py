@@ -90,7 +90,8 @@ class AuthService:
     def register_new_user(self, user_data: UserCreate) -> Token:
         user = tables.User(
             email=user_data.email,
-            username=user_data.username,
+            name=user_data.name,
+            surname=user_data.surname,
             password_hash=self.hash_password(user_data.password),
             role=user_data.role
         )
