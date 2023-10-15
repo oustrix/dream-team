@@ -14,6 +14,7 @@ class User(Base):
     email = sa.Column(sa.String, unique=True)
     name = sa.Column(sa.Text)
     surname = sa.Column(sa.Text)
+    photo = sa.Column(sa.String(255))
     balance = sa.Column(sa.Numeric(10, 2), default=0)
     pending_money = sa.Column(sa.Numeric(10, 2), default=0)
     role = sa.Column(sa.String)
