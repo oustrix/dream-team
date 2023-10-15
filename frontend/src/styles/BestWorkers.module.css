@@ -58,7 +58,12 @@
 }
 
 .category {
+  min-width: 150px;
   margin-top: 1rem;
+  padding: 5px;
+
+  text-align:center;
+
   background-color: var(--violet);
-  border-radius: 5px;
+  border-radius: 5px
 }
