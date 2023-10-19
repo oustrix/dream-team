@@ -1,0 +1,11 @@
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.header h1 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 51px;
+}
