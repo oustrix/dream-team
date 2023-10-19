@@ -9,3 +9,8 @@
     font-weight: 700;
     line-height: 51px;
 }
+
+.orders {
+    max-width: 600px;
+    margin-top: 50px;
+}
