@@ -24,6 +24,10 @@
     min-height: 150px;
     max-height: 150px;
     margin-top: 20px;
+
+    border: 1px solid rgb(71 70 70);
+    border-radius: 15px;
+    box-shadow: 0 5px 10px 2px rgb(71 70 70 / 20%) inset;
 }
 
 
