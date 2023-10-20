@@ -9,7 +9,7 @@ interface OrderRequest {
   page: number
 }
 
-const getOrders = createAsyncThunk('orders/getOrders', async (ordersRequest: OrderRequest, thunkAPI) => {
+export const getOrders = createAsyncThunk('orders/getOrders', async (ordersRequest: OrderRequest, thunkAPI) => {
   const { categoryID, page } = ordersRequest
   const requestURL = new URL(`${BASE_URL}/orders`)
 
