@@ -11,6 +11,12 @@
 }
 
 .orders {
-    max-width: 600px;
+    max-width: 700px;
     margin-top: 50px;
+}
+
+.order {
+    width: 100%;
+    min-height: 150px;
+    max-height: 150px;
 }
