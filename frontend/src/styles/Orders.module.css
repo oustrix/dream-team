@@ -31,3 +31,7 @@
     flex-direction: column;
     margin: 25px 0 0 25px;
 }
+
+.order_title {
+    text-transform: capitalize;
+}
