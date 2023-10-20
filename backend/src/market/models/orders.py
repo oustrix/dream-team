@@ -16,6 +16,7 @@ class OrderBase(BaseModel):
     title: str
     description: str
     reward: int
+    category_id: int
 
 
 class Order(OrderBase):
