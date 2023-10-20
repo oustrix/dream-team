@@ -4,9 +4,9 @@ import axios from 'axios'
 
 import { BASE_URL } from '../../utils/constants'
 
-interface OrderRequest {
-  categoryID: number
-  page: number
+export interface OrderRequest {
+  categoryID: string | null
+  page: string | null
 }
 
 export const getOrders = createAsyncThunk('orders/getOrders', async (ordersRequest: OrderRequest, thunkAPI) => {
@@ -14,10 +14,10 @@ export const getOrders = createAsyncThunk('orders/getOrders', async (ordersReque
   const requestURL = new URL(`${BASE_URL}/orders`)
 
   if (categoryID) {
-    requestURL.searchParams.append('category', categoryID.toString())
+    requestURL.searchParams.append('category', categoryID)
   }
   if (page) {
-    requestURL.searchParams.append('page', page.toString())
+    requestURL.searchParams.append('page', page)
   }
 
   try {
