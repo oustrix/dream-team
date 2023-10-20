@@ -41,8 +41,15 @@
 }
 
 .order_title {
-    text-align: left;
+    display: inline-block;
+    color: var(--grey);
+    text-align: left
 }
+
+.order_title:hover {
+    color: var(--white);
+}
+  
 
 .description {
     margin-top: 15px;
