@@ -34,9 +34,11 @@
 .info {
     display: flex;
     flex-direction: column;
+    width: 60%;
     margin: 25px 0 0 25px;
 }
 
 .order_title {
+    text-align: left;
     text-transform: capitalize;
 }
