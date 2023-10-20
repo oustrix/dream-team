@@ -39,6 +39,7 @@ class Order(Base):
     owner_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
     status = sa.Column(sa.String)
     worker_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
+    category_id = sa.Column(sa.Integer, sa.ForeignKey('categories.id'))
     title = sa.Column(sa.String)
     description = sa.Column(sa.Text)
     reward = sa.Column(sa.Numeric(10, 2))
