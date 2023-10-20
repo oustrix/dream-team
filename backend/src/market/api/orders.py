@@ -18,6 +18,7 @@ def get_orders(
         status: Optional[OrderStatus] = None,
         owner: int = None,
         worker: int = None,
+        amount: int = None,
         service: OrdersService = Depends()
 ):
     """
@@ -26,6 +27,7 @@ def get_orders(
     - **status**: статус заказаа (см. схему OrderStatus)
     - **owner**: ID владельца заказа
     - **worker**: ID исполнителя заказа
+    - **amount**: количество заказов
 
     \f
     :param status:
@@ -34,7 +36,7 @@ def get_orders(
     :param service:
     :return:
     """
-    return service.get_orders(order_status=status, owner_id=owner, worker_id=worker)
+    return service.get_orders(order_status=status, owner_id=owner, worker_id=worker, amount=amount)
 
 
 @router.get('/{order_id}', response_model=Order, summary="Получение заказа")

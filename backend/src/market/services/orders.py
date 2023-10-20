@@ -38,7 +38,8 @@ class OrdersService:
     def get_orders(self,
                    order_status: OrderStatus = None,
                    owner_id: int = None,
-                   worker_id: int = None) -> List[tables.Order]:
+                   worker_id: int = None,
+                   amount: int = None) -> List[tables.Order]:
         query = self.session.query(tables.Order)
 
         if order_status:
@@ -47,6 +48,9 @@ class OrdersService:
             query.filter_by(owner_id=owner_id)
         if worker_id:
             query.filter_by(worker_id=worker_id)
+
+        if amount:
+            query.limit(amount)
 
         orders = query.all()
 
