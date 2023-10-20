@@ -17,7 +17,10 @@
 }
 
 .order {
+    display: flex;
+
     width: 100%;
     min-height: 150px;
     max-height: 150px;
+    margin-top: 20px;
 }
