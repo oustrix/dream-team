@@ -20,6 +20,7 @@ export const Orders = ({ amount }: { amount: number }) => {
       categoryID: searchParams.get('category'),
       page: searchParams.get('page') ? searchParams.get('page') : '1',
       amount: searchParams.get('amount') ? searchParams.get('amount') : amount.toString(),
+      status: 'open',
     }
     dispatch(getOrders(req))
   }, [dispatch, searchParams, amount])
