@@ -61,3 +61,8 @@
     min-width: 250px;
     padding: 20px 30px;
 }
+
+.config_header {
+    font-size: 20px;
+    text-align: center;
+}
