@@ -4,6 +4,7 @@ services:
   backend:
     image: backend:latest
     build: ./backend
+    container_name: backend
     ports:
      - "8001:8001"
     environment:
@@ -11,6 +12,6 @@ services:
 
   frontend:
     image: frontend:latest
-    build: ./frontend
+    container_name: frontend
     ports:
     - "3000:3000"
