@@ -9,7 +9,7 @@ import { AppDispatch } from '../../features/store'
 import styles from '../../styles/Orders.module.css'
 
 export const Orders = ({ amount }: { amount: number }) => {
-  const { list } = useSelector(({ orders }) => orders)
+  const orders = useSelector(({ orders }) => orders)
 
   const dispatch = useDispatch<AppDispatch>()
 
@@ -32,7 +32,7 @@ export const Orders = ({ amount }: { amount: number }) => {
           <h1>Заказы</h1>
         </div>
         <div className={styles.orders}>
-          {list.map(({ id, title, description }: { id: number; title: string; description: string }) => (
+          {orders.list.map(({ id, title, description }: { id: number; title: string; description: string }) => (
             <div key={id} className={styles.order}>
               <div className={styles.info}>
                 <NavLink to={`${id}`} className={styles.link}>
