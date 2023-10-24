@@ -77,3 +77,8 @@
     background-color: var(--sea);
     border-radius: 10px;
 }
+
+.categories_input {
+    padding: 5px;
+    font-weight: 500;
+    color: var(--dark);}
