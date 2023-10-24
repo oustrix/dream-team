@@ -70,3 +70,10 @@
     font-size: 20px;
     text-align: center;
 }
+
+.categories_select {
+    margin-top: 15px;
+    padding: 5px;
+    background-color: var(--sea);
+    border-radius: 10px;
+}
