@@ -2,7 +2,9 @@ build-back:
 	docker build -t backend ./backend
 
 build-front:
-	docker build -t frontend ./frontend
+	cd ./frontend && \
+	npm run build && \
+	docker build -t frontend .
 
 clean:
 	docker system prune -a
