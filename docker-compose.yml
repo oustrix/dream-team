@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  backend:
+    image: backend:latest
+    build: ./backend
+    ports:
+     - "8001:8001"
+    environment:
+    - PORT=8001
+
+  frontend:
+    image: frontend:latest
+    build: ./frontend
+    ports:
+    - "3000:3000"
