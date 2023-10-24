@@ -26,25 +26,53 @@ export const Orders = ({ amount }: { amount: number }) => {
   }, [dispatch, searchParams, amount])
 
   return (
-    <div className={styles.container}>
-      <section className={styles.orders_container}>
-        <div className={styles.header}>
-          <h1>Заказы</h1>
-        </div>
-        <div className={styles.orders}>
-          {orders.list.map(({ id, title, description }: { id: number; title: string; description: string }) => (
-            <div key={id} className={styles.order}>
-              <div className={styles.info}>
-                <NavLink to={`${id}`} className={styles.link}>
-                  <h2 className={styles.order_title}>{title}</h2>
-                </NavLink>
-                <div className={styles.description}>{description}</div>
+    <div>
+      <div className={styles.container}>
+        <section className={styles.orders_container}>
+          <div className={styles.header}>
+            <h1>Заказы</h1>
+          </div>
+          <div className={styles.orders}>
+            {orders.list.map(({ id, title, description }: { id: number; title: string; description: string }) => (
+              <div key={id} className={styles.order}>
+                <div className={styles.info}>
+                  <NavLink to={`${id}`} className={styles.link}>
+                    <h2 className={styles.order_title}>{title}</h2>
+                  </NavLink>
+                  <div className={styles.description}>{description}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className={styles.config}>
+          <div className={styles.config_categories}>
+            <h3 className={styles.config_header}>Категория</h3>
+            <div className={styles.select}>
+              <input type='text' placeholder='Выберите категорию' className={styles.input} />
+              <div className={styles.arrow}>
+                <svg width='16px' height='16px'>
+                  <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#arrow`} />
+                </svg>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-      <section className={styles.config}>конфиг</section>
+          </div>
+          <div className={styles.config_food}>
+            <h3 className={styles.config_header}>Способ оплаты</h3>
+            <div className={styles.select}>
+              <input type='text' placeholder='Выберите способ оплаты' className={styles.input} />
+              <div className={styles.arrow}>
+                <svg width='16px' height='16px'>
+                  <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#arrow`} />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div className={styles.config_confirm}>
+            <button>Применить фильтры</button>
+          </div>
+        </section>
+      </div>
     </div>
   )
 }
