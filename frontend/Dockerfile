@@ -2,12 +2,8 @@ FROM node:lts
 
 WORKDIR /app
 
+COPY ./build .
 
-COPY package*.json .
+RUN npm install -g serve
 
-RUN npm ci
-
-COPY ./public ./public/
-COPY ./src ./src/
-
-CMD ["npm", "start"]
+CMD serve -s . -l tcp://0.0.0.0:3000
