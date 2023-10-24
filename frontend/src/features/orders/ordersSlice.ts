@@ -13,7 +13,7 @@ export interface OrderRequest {
 
 export const getOrders = createAsyncThunk('orders/getOrders', async (ordersRequest: OrderRequest, thunkAPI) => {
   const { categoryID, page, amount, status } = ordersRequest
-  const requestURL = new URL(`${BASE_URL}/orders`)
+  const requestURL = new URL(`${BASE_URL}/orders/`)
 
   if (categoryID) {
     requestURL.searchParams.append('category', categoryID)
