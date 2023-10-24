@@ -43,16 +43,20 @@ class OrdersService:
                    category_id: int = None) -> List[tables.Order]:
         query = self.session.query(tables.Order)
 
-        if amount:
-            query.limit(amount)
         if order_status:
-            query.filter_by(status=order_status)
+            query = query.filter_by(status=order_status)
         if owner_id:
-            query.filter_by(owner_id=owner_id)
+            query = query.filter_by(owner_id=owner_id)
         if worker_id:
-            query.filter_by(worker_id=worker_id)
+            query = query.filter_by(worker_id=worker_id)
         if category_id:
-            query.filter(tables.Order.category_id == category_id)
+            query = query.filter_by(category_id=category_id)
+
+        # Limit and offset must be applied after filters
+        if amount:
+            query = query.limit(amount)
+
+        print(query)
 
         orders = query.all()
 
