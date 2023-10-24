@@ -19,6 +19,7 @@ def get_orders(
         owner: int = None,
         worker: int = None,
         amount: int = None,
+        category: int = None,
         service: OrdersService = Depends()
 ):
     """
@@ -28,15 +29,19 @@ def get_orders(
     - **owner**: ID владельца заказа
     - **worker**: ID исполнителя заказа
     - **amount**: количество заказов
+    - **category**: ID категории
 
     \f
+    :param category:
+    :param amount:
     :param status:
     :param owner:
     :param worker:
     :param service:
     :return:
     """
-    return service.get_orders(order_status=status, owner_id=owner, worker_id=worker, amount=amount)
+    return service.get_orders(order_status=status, owner_id=owner, worker_id=worker, amount=amount, category_id=category)
+
 
 
 @router.get('/{order_id}', response_model=Order, summary="Получение заказа")
