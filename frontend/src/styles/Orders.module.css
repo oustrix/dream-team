@@ -91,13 +91,42 @@
   color: var(--dark);
 }
 
-.config_food {
-  margin: 50px 0 30px;
-}
-
 .arrow {
   margin: 3px 10px 0 0;
   color: var(--dark);
+}
+
+.config_categories {
+  position: relative;
+}
+
+.categories_list {
+  position: absolute;
+  z-index: 9;
+
+  overflow-y: auto;
+
+  width: 100%;
+  max-height: 200px;
+  padding: 10px;
+
+  background-color: var(--sea);
+  border-radius: 5px;
+}
+
+.category_option {
+  cursor: pointer;
+  padding: 5px;
+  color: var(--dark);
+}
+
+.category_option:hover {
+  color: var(--light);
+  background-color: var(--dark);
+}
+
+.config_food {
+  margin: 50px 0 30px;
 }
 
 .config_confirm {
