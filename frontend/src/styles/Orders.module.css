@@ -125,6 +125,25 @@
   background-color: var(--dark);
 }
 
+.categories_box {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 340px;
+}
+
+.selected_category {
+  display: inline-block;
+
+  margin-top: 15px;
+  margin-right: 10px;
+  padding: 5px 10px;
+
+  color: var(--dark);
+
+  background-color: var(--violet);
+  border-radius: 5px;
+}
+
 .config_food {
   margin: 50px 0 30px;
 }
