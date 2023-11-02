@@ -131,7 +131,8 @@
 }
 
 .selected_category {
-  display: inline-block;
+  display: flex;
+  align-items: center;
 
   margin-top: 15px;
   margin-right: 10px;
@@ -151,4 +152,9 @@
   display: flex;
   justify-content: space-around;
   padding-bottom: 10px;
+}
+
+.close {
+  cursor: pointer;
+  margin: 0 0 0 5px; 
 }
