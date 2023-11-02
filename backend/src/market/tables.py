@@ -82,3 +82,12 @@ class Worker(Base):
     id = sa.Column(sa.Integer, primary_key=True)
     user_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
     main_category = sa.Column(sa.Integer, sa.ForeignKey('categories.id'))
+
+class Payback(Base):
+    __tablename__ = 'paybacks'
+
+    id = sa.Column(sa.Integer, primary_key=True)
+    name = sa.Column(sa.String(31))
+    count = sa.Column(sa.Integer)
+    units = sa.Column(sa.String(31))
+    price = sa.Column(sa.Integer)
