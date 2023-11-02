@@ -72,8 +72,11 @@ export const Orders = ({ amount }: { amount: number }) => {
     const category_wrapper = document.createElement('div')
     document.getElementById('categories_box')?.append(category_wrapper)
     const category = (
-      <div className={styles.selected_category} id={id.toString()}>
+      <div className={styles.selected_category} id={`category-${id.toString()}`}>
         {name}
+        <svg className={styles.close} onClick={() => removeCategory(id)} width='16px' height='16px'>
+          <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#close`} />
+        </svg>
       </div>
     )
 
@@ -81,6 +84,12 @@ export const Orders = ({ amount }: { amount: number }) => {
     setSelectedCategories((selectedCategories) => [...selectedCategories, id])
     wrap.render(category)
     hideCategoriesList()
+  }
+
+  const removeCategory = (id: number) => {
+    setSelectedCategories((selectedCategories) => selectedCategories.filter((selectedID) => selectedID != id))
+
+    document.getElementById('category-' + id.toString())?.remove()
   }
 
   return (
