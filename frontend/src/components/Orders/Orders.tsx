@@ -7,12 +7,14 @@ import { NavLink, useSearchParams } from 'react-router-dom'
 
 import { getCategories } from '../../features/categories/categoriesSlice'
 import { getOrders, OrderRequest } from '../../features/orders/ordersSlice'
+import { getPaybacks } from '../../features/paybacks/paybacksSlice'
 import { AppDispatch } from '../../features/store'
 import styles from '../../styles/Orders.module.css'
 
 export const Orders = ({ amount }: { amount: number }) => {
   const orders = useSelector(({ orders }) => orders)
   const categories = useSelector(({ categories }) => categories)
+  const paybacks = useSelector(({ paybacks }) => paybacks)
 
   const dispatch = useDispatch<AppDispatch>()
 
@@ -27,6 +29,7 @@ export const Orders = ({ amount }: { amount: number }) => {
     }
     dispatch(getOrders(req))
     dispatch(getCategories())
+    dispatch(getPaybacks())
   }, [dispatch, searchParams, amount])
 
   const showCategoriesList = () => {
@@ -72,7 +75,7 @@ export const Orders = ({ amount }: { amount: number }) => {
     const category_wrapper = document.createElement('div')
     document.getElementById('categories_box')?.append(category_wrapper)
     const category = (
-      <div className={styles.selected_category} id={`category-${id.toString()}`}>
+      <div className={styles.selected} id={`category-${id.toString()}`}>
         {name}
         <svg className={styles.close} onClick={() => removeCategory(id)} width='16px' height='16px'>
           <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#close`} />
@@ -87,10 +90,74 @@ export const Orders = ({ amount }: { amount: number }) => {
   }
 
   const removeCategory = (id: number) => {
-    setSelectedCategories((selectedCategories) => selectedCategories.filter((selectedID) => selectedID != id))
+    setSelectedCategories((selectedCategories) => selectedCategories.filter((selectedID) => selectedID !== id))
 
     document.getElementById('category-' + id.toString())?.remove()
   }
+
+  const [selectedPaybacks, setSelectedPaybacks] = useState<number[]>([])
+
+  const showPaybacksList = () => {
+    let list = document!.getElementById('paybacks_list')
+
+    // @ts-ignore
+    list.style.display = 'block'
+  }
+
+  const hidePaybacksList = () => {
+    let list = document!.getElementById('paybacks_list')
+    // @ts-ignore
+    list.style.display = 'none'
+  }
+
+  // @ts-ignore
+  const useOutsidePaybacks = (ref) => {
+    useEffect(() => {
+      // @ts-ignore
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          hidePaybacksList()
+        }
+      }
+
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside)
+      }
+    }, [ref])
+  }
+
+  const addPayback = (id: number, name: string) => {
+    if (selectedPaybacks.includes(id)) {
+      hidePaybacksList()
+      return
+    }
+
+    const category_wrapper = document.createElement('div')
+    document.getElementById('paybacks_box')?.append(category_wrapper)
+    const payback = (
+      <div className={styles.selected} id={`payback-${id.toString()}`}>
+        {name}
+        <svg className={styles.close} onClick={() => removePayback(id)} width='16px' height='16px'>
+          <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#close`} />
+        </svg>
+      </div>
+    )
+
+    const wrap = ReactDOM.createRoot(category_wrapper)
+    setSelectedPaybacks((selectedPaybacks) => [...selectedPaybacks, id])
+    wrap.render(payback)
+    hidePaybacksList()
+  }
+
+  const removePayback = (id: number) => {
+    setSelectedPaybacks((selectedPaybacks) => selectedPaybacks.filter((selectedID) => selectedID !== id))
+
+    document.getElementById('payback-' + id.toString())?.remove()
+  }
+
+  const wrapperPaybacksRef = useRef(null)
+  useOutsidePaybacks(wrapperPaybacksRef)
 
   return (
     <div>
@@ -124,14 +191,9 @@ export const Orders = ({ amount }: { amount: number }) => {
                   </svg>
                 </div>
               </div>
-              <ul className={styles.categories_list} id='categories_list' style={{ display: 'none' }}>
+              <ul className={styles.list} id='categories_list' style={{ display: 'none' }}>
                 {categories.list.map(({ id, name }: { id: number; name: string }) => (
-                  <li
-                    key={id}
-                    className={styles.category_option}
-                    id={id.toString()}
-                    onClick={() => addCategory(id, name)}
-                  >
+                  <li key={id} className={styles.list_option} id={id.toString()} onClick={() => addCategory(id, name)}>
                     {name}
                   </li>
                 ))}
@@ -141,13 +203,40 @@ export const Orders = ({ amount }: { amount: number }) => {
           </div>
           <div className={styles.config_food}>
             <h3 className={styles.config_header}>Способ оплаты</h3>
-            <div className={styles.select}>
-              <input type='text' placeholder='Выберите способ оплаты' className={styles.input} />
-              <div className={styles.arrow}>
-                <svg width='16px' height='16px'>
-                  <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#arrow`} />
-                </svg>
+            <div ref={wrapperPaybacksRef}>
+              <div className={styles.select} onClick={showPaybacksList}>
+                <input type='text' placeholder='Выберите способ оплаты' className={styles.input} />
+                <div className={styles.arrow}>
+                  <svg width='16px' height='16px'>
+                    <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#arrow`} />
+                  </svg>
+                </div>
               </div>
+              <ul className={styles.list} id='paybacks_list' style={{ display: 'none' }}>
+                {paybacks.list.map(
+                  ({
+                    id,
+                    name,
+                    count,
+                    units,
+                    price,
+                  }: {
+                    id: number
+                    name: string
+                    count: number
+                    units: string
+                    price: number
+                  }) => (
+                    <li key={id} className={styles.list_option} id={id.toString()} onClick={() => addPayback(id, name)}>
+                      <p style={{ display: 'inline-block' }}>{name}</p>
+                      <p style={{ display: 'inline-block' }}>
+                        {count} {units}
+                      </p>
+                    </li>
+                  ),
+                )}
+              </ul>
+              <div className={styles.paybacks_box} id='paybacks_box'></div>
             </div>
           </div>
           <div className={styles.config_confirm}>

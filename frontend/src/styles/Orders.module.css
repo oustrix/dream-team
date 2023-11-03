@@ -99,7 +99,7 @@
   position: relative;
 }
 
-.categories_list {
+.list {
   position: absolute;
   z-index: 9;
 
@@ -107,19 +107,22 @@
 
   width: 100%;
   max-height: 200px;
+  max-width: 340px;
   padding: 10px;
 
   background-color: var(--sea);
   border-radius: 5px;
 }
 
-.category_option {
+.list_option {
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
   padding: 10px 5px;
   color: var(--dark);
 }
 
-.category_option:hover {
+.list_option:hover {
   color: var(--light);
   background-color: var(--dark);
 }
@@ -130,7 +133,7 @@
   max-width: 340px;
 }
 
-.selected_category {
+.selected {
   display: flex;
   align-items: center;
 
@@ -157,4 +160,10 @@
 .close {
   cursor: pointer;
   margin: 0 0 0 5px; 
+}
+
+.paybacks_box {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 340px;
 }
