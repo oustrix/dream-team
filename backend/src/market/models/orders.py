@@ -40,10 +40,10 @@ class OrderUpdate(OrderBase):
     worker_id: Optional[int]
 
 class GetOrders(BaseModel):
-    status: Optional[OrderStatus]
-    owner: int
-    worker: int
-    page: int
-    amount: int
-    categories: List[int]
-    paybacks: List[int]
+    status: Optional[OrderStatus] = OrderStatus.OPEN
+    owner: Optional[int] = None
+    worker: Optional[int] = None
+    page: Optional[int] = None
+    amount: Optional[int] = None
+    categories: List[int] = None
+    paybacks: List[int] = None
