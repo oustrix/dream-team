@@ -56,8 +56,6 @@ class OrdersService:
         if amount:
             query = query.limit(amount)
 
-        print(query)
-
         orders = query.all()
 
         return orders
