@@ -3,7 +3,7 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends
 
 from src.market.models.auth import User
-from src.market.models.orders import Order, OrderCreate, OrderStatus, OrderUpdate
+from src.market.models.orders import Order, OrderCreate, OrderStatus, OrderUpdate, GetOrders
 from src.market.services.auth import get_current_user
 from src.market.services.orders import OrdersService
 
@@ -13,13 +13,9 @@ router = APIRouter(
 )
 
 
-@router.get('/', response_model=List[Order])
+@router.post('/list', response_model=List[Order])
 def get_orders(
-        status: Optional[OrderStatus] = None,
-        owner: int = None,
-        worker: int = None,
-        amount: int = None,
-        category: int = None,
+        request: GetOrders,
         service: OrdersService = Depends()
 ):
     """
@@ -28,19 +24,23 @@ def get_orders(
     - **status**: статус заказаа (см. схему OrderStatus)
     - **owner**: ID владельца заказа
     - **worker**: ID исполнителя заказа
+    - **page**: страница заказов
     - **amount**: количество заказов
-    - **category**: ID категории
+    - **categories**: массив ID необходимых категорий
+    - **paybacks**: массив ID необходимых способов оплаты
 
     \f
-    :param category:
-    :param amount:
-    :param status:
-    :param owner:
-    :param worker:
+    :param request:
     :param service:
     :return:
     """
-    return service.get_orders(order_status=status, owner_id=owner, worker_id=worker, amount=amount, category_id=category)
+    return service.get_orders(order_status=request.status,
+                              owner_id=request.owner,
+                              worker_id=request.worker,
+                              page=request.page,
+                              amount=request.amount,
+                              categories=request.categories,
+                              paybacks=request.paybacks)
 
 
 

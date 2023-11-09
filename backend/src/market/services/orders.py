@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import List
 
 from fastapi import Depends, HTTPException, status
+from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
 from src.market import tables
@@ -39,8 +40,10 @@ class OrdersService:
                    order_status: OrderStatus = None,
                    owner_id: int = None,
                    worker_id: int = None,
+                   page: int = None,
                    amount: int = None,
-                   category_id: int = None) -> List[tables.Order]:
+                   categories: List[int] = None,
+                   paybacks: List[int] = None) -> List[tables.Order]:
         query = self.session.query(tables.Order)
 
         if order_status:
@@ -49,14 +52,17 @@ class OrdersService:
             query = query.filter_by(owner_id=owner_id)
         if worker_id:
             query = query.filter_by(worker_id=worker_id)
-        if category_id:
-            query = query.filter_by(category_id=category_id)
+        if categories:
+            query = query.filter(or_(*[tables.Order.category_id == category_id for category_id in categories]))
 
         # Limit and offset must be applied after filters
-        if amount:
-            query = query.limit(amount)
+        if amount is None:
+            amount = 20
+        if page is None:
+            page = 1
 
-        orders = query.all()
+        offset = (page - 1) * amount
+        orders = query.offset(offset).limit(amount).all()
 
         return orders
 

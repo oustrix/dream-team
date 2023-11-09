@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Optional
+from typing import Optional, List
 
 from pydantic import BaseModel
 from datetime import date
@@ -31,7 +31,6 @@ class Order(OrderBase):
     class Config:
         from_attributes = True
 
-
 class OrderCreate(OrderBase):
     pass
 
@@ -39,3 +38,12 @@ class OrderCreate(OrderBase):
 class OrderUpdate(OrderBase):
     status: OrderStatus
     worker_id: Optional[int]
+
+class GetOrders(BaseModel):
+    status: Optional[OrderStatus]
+    owner: int
+    worker: int
+    page: int
+    amount: int
+    categories: List[int]
+    paybacks: List[int]
